@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV-Wiame Achguiga</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      display: flex;
+      min-height: 100vh;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: 0.3s;
+    }
+
+  
+    :root {
+      --bg: #f6f9f7;
+      --text: #1b1b1b;
+      --card: #ffffff;
+      --main: #a8cbb7;   
+      --accent: #a2c2e2;
+    }
+
+    .dark {
+      --bg: #1a1c1b;
+      --text: #f6f6f6;
+      --card: #2a2c2b;
+      --main: #7fa38c;
+      --accent: #7ea2c2;
+    }
+    .sidebar {
+      width: 25%;
+      background: var(--card);
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-right: 3px solid var(--main);
+    }
+
+    .sidebar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--main);
+      margin-bottom: 15px;
+    }
+
+    .info {
+      text-align: center;
+    }
+
+    .info h1 {
+      font-size: 1.4em;
+      color: var(--main);
+      margin-bottom: 10px;
+    }
+
+    .info p {
+      margin: 4px 0;
+      font-size: 0.95em;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      background: var(--card);
+      border-bottom: 3px solid var(--main);
+    }
+
+    .menu button {
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1em;
+      cursor: pointer;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+
+    .menu button:hover {
+      color: var(--accent);
+    }
+
+    .toggle {
+      background: var(--main);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      font-size: 1.1em;
+    }
+
+    .content {
+      flex: 1;
+      padding: 30px;
+      background: var(--bg);
+    }
+
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+      animation: fade 0.4s ease-in-out;
+    }
+
+    @keyframes fade {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    h2 {
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style-type: "✔ ";
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <img src="c:\Users\nachg\Downloads\phtoprofill.webp" alt="Photo de profil">
+    <div class="info">
+      <h1>Wiame Achguiga</h1>
+      <p> +212 631870685</p>
+      <p> wiameachguigaa@gmail.com</p>
+      <p> Essaouira, Maroc</p>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="navbar">
+      <div class="menu">
+        <button onclick="showSection('etudes')">Études</button>
+        <button onclick="showSection('competences')">Compétences</button>
+        <button onclick="showSection('experiences')">Expériences</button>
+      </div>
+      <button class="toggle" onclick="toggleMode()">🌙</button>
+    </div>
+
+    <div class="content">
+      <div id="etudes" class="section active">
+        <h2>Parcours d'études</h2>
+        <p>Étudiante en BTS Développement Web Full Stack à Essaouira.</p>
+        <p>Baccalauréat en Sciences de la Vie et de la Terre (SVT).</p>
+      </div>
+
+      <div id="competences" class="section">
+        <h2>Compétences</h2>
+        <ul>
+          <li>HTML, CSS, JavaScript</li>
+          <li>PHP, C++, MySQL, Python</li>
+          <li>Travail en équipe, communication, créativité</li>
+        </ul>
+      </div>
+
+      <div id="experiences" class="section">
+        <h2>Expériences</h2>
+        <p>Stage en développement web (1ère année) - création du front-end d’une plateforme de gestion des stagiaires.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+      const btn = document.querySelector('.toggle');
+      btn.textContent = document.body.classList.contains('dark') ? '☀' : '🌙';
+    }
+  </script>
+</body>
+</html>
